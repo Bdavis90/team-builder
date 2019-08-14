@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function Form(props) {
+  console.log(props);
   const [newMember, setNewMember] = useState({
     name: "",
     email: "",
@@ -19,8 +20,10 @@ function Form(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
+    const addAnotherMember = { ...newMember };
+    props.addNewMember(addAnotherMember);
   };
-  console.log();
+
   return (
     <form onSubmit={event => handleSubmit(event)}>
       <label htmlFor="name">Name</label>
